@@ -6,29 +6,27 @@ import models.PersonasGenerator;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Person[] personas = new PersonasGenerator().generarPersonas();
-        
+        PersonasGenerator generator1 = new PersonasGenerator();
+        Person[] personas = generator1.generarPersonas();
+        System.out.println("Lista de personas generadas: ");
         for(Person person : personas){
             System.out.println(person);
         }
 
         MetodosOrdenamientoBusqueda mOB = new MetodosOrdenamientoBusqueda();
-        mOB.sortByAgeWithSelection(personas);
+        mOB.sortByAgeWithInsertion(personas);
         mOB.showPeople(personas);
-        int result = mOB.searchBinaryByAge(personas, 40);
+        int result = mOB.searchBinaryByAge(personas, 73);
 
         if(result == -1){
             System.out.println("No encontro");
         }else{
-            System.out.println("Encontro en la posicion" + result);
+            System.out.println("Encontro en la posicion: " + result);
         }
 
 
 
         CarrosGenerator generator = new CarrosGenerator();
-
-        // Obtener el arreglo de 50 carros generadas aleatoriamente
-
         Carro[] carros = generator.generarCarros();
 
         System.out.println("Listado de carros generadas:");
